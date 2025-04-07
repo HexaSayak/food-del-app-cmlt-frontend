@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react'
+// import React, { useEffect } from 'react'
 import './Verify.css'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext';
@@ -14,6 +15,7 @@ const Verify = () => {
 
     const verifyPayment = async ()=> {
       const response = await axios.post(url+"/api/order/verify",{success,orderId});
+      // const response = await axios.post("https://food-del-app-backend-x861.onrender.com/api/order/verify",{success,orderId});
       if (response.data.success) {
         navigate("/myorders")
       }

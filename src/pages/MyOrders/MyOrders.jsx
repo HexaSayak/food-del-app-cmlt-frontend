@@ -5,14 +5,14 @@ import axios from "axios";
 import { assets } from '../../assets/assets';
 const MyOrders = () => {
 
-    // const {url,token} = useContext(StoreContext);
-    const {token} = useContext(StoreContext);
+    const {url,token} = useContext(StoreContext);
+    // const {token} = useContext(StoreContext);
     const [data,setData] = useState([]);
 
     const fetchOrders = async ()=> {
-        // const response = await axios.post(url+"/api/order/userorders",{},{headers:{token}});
+        const response = await axios.post(url+"/api/order/userorders",{},{headers:{token}});
         // const response = await axios.post("https://food-del-app-cmlt-frontend.vercel.app/api/order/userorders",{},{headers:{token}});
-        const response = await axios.post("https://food-del-app-backend-x861.onrender.com/api/order/userorders",{},{headers:{token}});
+        // const response = await axios.post("https://food-del-app-backend-x861.onrender.com/api/order/userorders",{},{headers:{token}});
         setData(response.data.data);
         
     }

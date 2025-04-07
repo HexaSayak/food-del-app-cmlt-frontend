@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 const PlaceOrder = () => {
 
-  const { getTotalCartAmount,token,food_list,cartItems,url } = useContext(StoreContext)
+  // const { getTotalCartAmount,token,food_list,cartItems,url } = useContext(StoreContext)
+  const { getTotalCartAmount,token,food_list,cartItems } = useContext(StoreContext)
 
   const [data,setData] = useState({
     firstName:"",
@@ -38,6 +39,7 @@ const PlaceOrder = () => {
         itemInfo["quantity"] = cartItems[item._id];
         orderItems.push(itemInfo);
       }
+      return item;
       // return item;
     })
     console.log(orderItems);
@@ -48,6 +50,7 @@ const PlaceOrder = () => {
       amount:getTotalCartAmount()+2,
     }
     let response = await axios.post(url+"/api/order/place",orderData,{headers:{token}})
+    // let response = await axios.post("https://food-del-app-backend-x861.onrender.com/api/order/place",orderData,{headers:{token}})
     console.log(response);
     debugger
     if (response.data.success) {
